@@ -1,5 +1,6 @@
 import PageNav from "../components/PageNav";
 import styles from "./Home.module.css";
+
 export default function Home() {
   return (
     <main className={styles.homepage}>
