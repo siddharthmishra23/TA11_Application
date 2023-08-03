@@ -5,11 +5,12 @@
   --color-dark: #ff922b;
 }
 .usage {
+  margin: 5rem;
   min-height: 70vh;
   display: grid;
   grid-template-columns: 45rem 55rem;
   column-gap: 4rem;
-  align-items: center;
+  align-items: start;
 }
 
 .button {
@@ -120,7 +121,66 @@ form h2 {
   margin-bottom: 1.6rem;
 }
 
-.device-list {
+.devicelist {
   grid-template-columns: 1fr 12rem;
   padding: 3.2rem 4rem;
+}
+
+.devicelist {
+  width: 100%;
+  border-collapse: collapse; /* Collapse borders */
+}
+
+.devicelist thead {
+  background-color: rgb(116, 154, 116);
+  color: #343a40;
+}
+
+.devicelist th,
+.devicelist td {
+  border: 1px solid var(--color-medium); /* Add a border to all table cells */
+  padding: 10px; /* Add some padding */
+  text-align: left; /* Left align text */
+}
+
+.devicelist tr:nth-child(even) {
+  background-color: rgb(25, 126, 25); /* Color every even row */
+}
+
+.devicelist tr:nth-child(odd) {
+  background-color: rgb(151, 179, 151); /* Color every even row */
+}
+
+.devicelist tr:hover {
+  background-color: orange; /* Add a hover effect */
+  color: rgb(23, 20, 20);
+}
+
+.devicelist th {
+  background-color: var(--color-dark); /* Color the header cells */
+  color: rgb(19, 15, 15);
+  cursor: pointer;
+}
+
+.devicelist td {
+  font-size: 1.2rem;
+}
+
+.msg {
+  display: flex;
+  font-size: large;
+  justify-content: center;
+  font-weight: 200;
+  background-color: #ffa94d;
+}
+
+.danger {
+  display: block;
+  color: #b80909;
+}
+
+.good {
+  display: block;
+  color: rgb(194, 218, 10);
+  font-weight: 400;
 }

@@ -19,22 +19,37 @@ export default function Home() {
     <main>
       <PageNav />
       <section className={styles.usage}>
-        <div className="app">
-          <div className="sidebar">
-            <FormAddDevice toAdd={handleDevice} />
-            <DeviceTable devices={devices} />
-          </div>
+        <div className={styles.sidebar}>
+          <FormAddDevice toAdd={handleDevice} />
+        </div>
+
+        <div className="">
+          <DeviceTable devices={devices} />
         </div>
       </section>
       <section>
-        {gasTotal > 0 && (
-          <span>Your total Gas carbon footprint is ${gasTotal}</span>
-        )}
-        {elctricityTotal > 0 && (
-          <span>
-            Your total Electricity carbon footprint is ${elctricityTotal}
-          </span>
-        )}
+        <div className={styles.msg}>
+          {gasTotal > 0 && (
+            <p>
+              Your total Gas carbon footprint is{" "}
+              <span className={gasTotal > 300 ? styles.danger : styles.good}>
+                ${gasTotal}
+              </span>
+            </p>
+          )}
+        </div>
+        <div className={styles.msg}>
+          {elctricityTotal > 0 && (
+            <p>
+              Your total Electricity carbon footprint is{" "}
+              <span
+                className={elctricityTotal > 300 ? styles.danger : styles.good}
+              >
+                ${elctricityTotal}
+              </span>
+            </p>
+          )}
+        </div>
       </section>
     </main>
   );
@@ -42,7 +57,7 @@ export default function Home() {
 
 function DeviceTable({ devices }) {
   return (
-    <table className="device-list">
+    <table className={styles.devicelist}>
       <thead>
         <tr>
           <th>ID</th>

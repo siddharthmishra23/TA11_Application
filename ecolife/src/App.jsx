@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Compare from "./pages/Compare";
 import PageNotFound from "./pages/PageNotFound";
 import Aboutus from "./pages/Aboutus";
+import Logo from "./components/Logo";
 
 function App() {
   return (
