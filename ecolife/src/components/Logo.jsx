@@ -4,11 +4,7 @@ import styles from "./Logo.module.css";
 function Logo() {
   return (
     <Link to="/">
-      <img
-        src="../../public/eco-logo.png"
-        alt="Ecolife logo"
-        className={styles.logo}
-      />
+      <img src="/eco-logo.png" alt="Ecolife logo" className={styles.logo} />
     </Link>
   );
 }
