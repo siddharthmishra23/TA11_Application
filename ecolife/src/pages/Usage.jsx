@@ -24,7 +24,7 @@ export default function Home() {
         </div>
 
         <div className="">
-          <DeviceTable devices={devices} />
+          {devices.length > 0 && <DeviceTable devices={devices} />}
         </div>
       </section>
       <section>
