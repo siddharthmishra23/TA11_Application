@@ -13,9 +13,6 @@ function PageNav() {
           <NavLink to="/usage">Usage</NavLink>
         </li>
         <li>
-          <NavLink to="/compare">Compare</NavLink>
-        </li>
-        <li>
           <NavLink to="/aboutus">About us</NavLink>
         </li>
       </ul>
