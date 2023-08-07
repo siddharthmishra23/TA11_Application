@@ -106,11 +106,12 @@ export default function Usage() {
     const electricityYearData = electricityData.filter(
       (data) => data.year === year
     );
-    const gasYearData = gasData.filter((data) => data.year === year);
 
-    // Map the data into a single array
-    const combinedData = electricityYearData.map((edata, index) => {
-      const gdata = gasYearData[index];
+    // Combine data
+    const combinedData = electricityYearData.map((edata) => {
+      const gdata = gasData.find(
+        (g) => g.year === year && g.suburb === edata.suburb
+      );
       return {
         name: edata.suburb,
         electricity: edata.emissionPerYear,
@@ -204,7 +205,6 @@ function DeviceTable({ devices, onDelete }) {
     <table className={styles.devicelist}>
       <thead>
         <tr>
-          <th></th>
           <th>Device Name</th>
           <th>Emission Type</th>
           <th>Usage (Hrs)</th>
@@ -215,7 +215,6 @@ function DeviceTable({ devices, onDelete }) {
       <tbody>
         {devices.map((device) => (
           <tr key={device.id}>
-            <td>{device.id}</td>
             <td>{device.name}</td>
             <td>{device.type}</td>
             <td>{device.usage}</td>
@@ -334,11 +333,18 @@ function FormAddDevice({ toAdd, postcodes }) {
         value={postcode}
         onChange={(e) => setPostcode(e.target.value)}
       >
-        {postcodes.map(({ postcode, suburb }) => (
-          <option key={postcode} value={postcode}>
-            {postcode} - {suburb}
-          </option>
-        ))}
+        {postcodes.map(({ postcode, suburb }) => {
+          let displayedSuburb = suburb.split(";").slice(0, 2).join(";");
+          if (suburb.split(";").length > 2) {
+            displayedSuburb += "...";
+          }
+
+          return (
+            <option key={postcode} value={postcode}>
+              {postcode} - {displayedSuburb}
+            </option>
+          );
+        })}
       </select>
       <Button disabled={isDisabled}>Add Device</Button>
     </form>
