@@ -4,7 +4,16 @@ function PageNotFound() {
   return (
     <div>
       <PageNav />
-      <h1>Page not found</h1>
+      <h1
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        Page not found
+      </h1>
     </div>
   );
 }

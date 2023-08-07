@@ -2,9 +2,10 @@
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr;
-  height: 5rem;
+  height: 7rem;
   background: rgb(9, 10, 9);
   padding: 0 2rem 0 2rem;
+  margin: 0px;
 }
 
 .nav ul {
