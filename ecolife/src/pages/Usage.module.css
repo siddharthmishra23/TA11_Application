@@ -75,6 +75,7 @@
 
 .red {
   color: #e03131;
+  font-weight: 400;
 }
 
 form {
@@ -175,7 +176,7 @@ form h2 {
   font-size: large;
   justify-content: center;
   font-weight: 200;
-  background-color: #049729;
+  background-color: #7da26b;
   padding: 2rem;
 }
 
@@ -183,12 +184,13 @@ form h2 {
   display: block;
   color: #b80909;
   text-align: center;
+  font-weight: bold;
 }
 
 .good {
   display: block;
   color: rgb(194, 218, 10);
-  font-weight: 400;
+  font-weight: bold;
   text-align: center;
 }
 
