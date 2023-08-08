@@ -1,0 +1,7 @@
+env_variables:
+  DB_HOST: "ta11ecolifesql.mysql.database.azure.com"
+  DB_USER: "ta11"
+  DB_PASSWORD: "Monash23"
+  DB_NAME: "carbonfootprint"
+  DB_PORT: "3306"
+  CA_CERT_PATH: "/Users/siddharthmishra/ssl/DigiCertGlobalRootCA.crt.pem"
