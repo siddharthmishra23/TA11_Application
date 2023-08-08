@@ -3,6 +3,9 @@ import PageNav from "../components/PageNav";
 import styles from "./Usage.module.css";
 import ComparisonModal from "./Visualization";
 
+// const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "http://localhost:3006";
+const API_ENDPOINT = "http://localhost:3005";
+
 export default function Usage() {
   const [electricityTotal, setElectricityTotal] = useState(0);
   const [gasTotal, setGasTotal] = useState(0);
@@ -33,10 +36,8 @@ export default function Usage() {
   }, [comparisonData]);
 
   useEffect(() => {
-    fetch("http://localhost:3004/gas")
-      .then((response) => {
-        return response.json();
-      })
+    fetch(`${API_ENDPOINT}/gas`)
+      .then((response) => response.json())
       .then((data) => {
         setGasData(data);
       })
@@ -46,10 +47,8 @@ export default function Usage() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3004/electricity")
-      .then((response) => {
-        return response.json();
-      })
+    fetch(`${API_ENDPOINT}/electricity`)
+      .then((response) => response.json())
       .then((data) => {
         setElectricityData(data);
       })
@@ -57,11 +56,10 @@ export default function Usage() {
         console.log(error);
       });
   }, []);
+
   useEffect(() => {
-    fetch("http://localhost:3004/postcodes")
-      .then((response) => {
-        return response.json();
-      })
+    fetch(`${API_ENDPOINT}/postcodes`)
+      .then((response) => response.json())
       .then((data) => {
         setPostcodes(data);
       })

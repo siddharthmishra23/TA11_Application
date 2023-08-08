@@ -1,10 +1,26 @@
 const fs = require("fs");
 const csv = require("csv-parser");
 const { Sequelize } = require("sequelize");
+const path = require("path");
+require("dotenv").config();
+// Importing the configuration
+const configPath = path.join(__dirname, "./config/config.json");
+const config = require(configPath);
 
-const sequelize = new Sequelize("CarbonFootprint", "root", "Monash23##", {
-  dialect: "mysql", // or another dialect
-});
+const env = process.env.NODE_ENV || "development";
+const dbConfig = config[env];
+let sequelize;
+
+if (dbConfig.use_env_variable) {
+  sequelize = new Sequelize(process.env[dbConfig.use_env_variable], dbConfig);
+} else {
+  sequelize = new Sequelize(
+    dbConfig.database,
+    dbConfig.username,
+    dbConfig.password,
+    dbConfig
+  );
+}
 
 // Import the Gas model from its module.
 const Gas = require("./models/gas")(sequelize, Sequelize.DataTypes);
