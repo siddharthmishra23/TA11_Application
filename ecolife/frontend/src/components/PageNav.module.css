@@ -3,9 +3,12 @@
   align-items: center;
   grid-template-columns: 1fr 1fr;
   height: 7rem;
-  background: rgb(9, 10, 9);
+  background: rgba(7, 7, 7, 0.859);
   padding: 0 2rem 0 2rem;
   margin: 0px;
+  position: sticky;
+  top: 0;
+  z-index: 9999999;
 }
 
 .nav ul {

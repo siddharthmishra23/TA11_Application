@@ -1,0 +1,179 @@
+$animation-timing: 27s;
+$carousel-items: 9;
+$animation-delay-fraction: $animation-timing / $carousel-items;
+$animation-steps-fraction: 100 / $carousel-items;
+$slide-change-timing: 3; // percentage of total animation cycle
+
+.wrapper {
+  background: linear-gradient(60deg, #420285, #08bdbd);
+
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  margin-top: 2rem;
+  right: 10rem;
+  padding: 4em;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.carousel__item {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  padding: 0 12px;
+  opacity: 0;
+  filter: drop-shadow(0 2px 2px #555);
+  will-change: transform, opacity;
+  animation: carousel-animate-vertical $animation-timing linear infinite;
+}
+
+@for $i from 1 through ($carousel-items - 1) {
+  .carousel__item:nth-child(#{$i}) {
+    animation-delay: calc(#{$animation-delay-fraction} * #{$i - 2});
+  }
+}
+
+.carousel__item:last-child {
+  animation-delay: calc(-#{$animation-delay-fraction} * 2);
+}
+
+// example without negative delays
+// @for $i from 1 through ($carousel-items) {
+//   .carousel__item:nth-child(#{$i}) {
+//     animation-delay: calc(#{$animation-delay-fraction} * #{$i});
+//   }
+// }
+
+.carousel__item-head {
+  border-radius: 50%;
+  background-color: #d7f7fc;
+  width: 90px;
+  height: 90px;
+  padding: 14px;
+  position: relative;
+  margin-right: -45px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+}
+
+.carousel__item-body {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 16px 20px 16px 70px;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 20px;
+  margin-top: 10px;
+  color: #420285;
+}
+
+@keyframes carousel-animate-vertical {
+  0% {
+    transform: translateY(100%) scale(0.5);
+    opacity: 0;
+    visibility: hidden;
+  }
+  #{$slide-change-timing}%,
+  #{$animation-steps-fraction}% {
+    transform: translateY(100%) scale(0.7);
+    opacity: 0.4;
+    visibility: visible;
+  }
+  #{$animation-steps-fraction + $slide-change-timing}%,
+  #{$animation-steps-fraction * 2}% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
+  #{($animation-steps-fraction * 2) + $slide-change-timing}%,
+  #{$animation-steps-fraction * 3}% {
+    transform: translateY(-100%) scale(0.7);
+    opacity: 0.4;
+    visibility: visible;
+  }
+  #{($animation-steps-fraction * 3) + $slide-change-timing}% {
+    transform: translateY(-100%) scale(0.5);
+    opacity: 0;
+    visibility: visible;
+  }
+  100% {
+    transform: translateY(-100%) scale(0.5);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@for $i from 1 through $carousel-items {
+  .carousel__item:nth-child(#{$i}) {
+    animation-delay: calc(#{$animation-delay-fraction} * (#{$i} - 1));
+  }
+}
+
+@keyframes carousel-animate-vertical {
+  0%,
+  100% {
+    transform: translateY(100%) scale(0.5);
+    opacity: 0;
+  }
+  5% {
+    transform: translateY(100%) scale(0.7);
+    opacity: 0.4;
+  }
+  15% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(-100%) scale(0.7);
+    opacity: 0.4;
+  }
+  35%,
+  65% {
+    transform: translateY(-200%) scale(0.5);
+    opacity: 0;
+  }
+  70% {
+    transform: translateY(-200%) scale(0.7);
+    opacity: 0.4;
+  }
+  80% {
+    transform: translateY(-100%) scale(1);
+    opacity: 1;
+  }
+  90% {
+    transform: translateY(0) scale(0.7);
+    opacity: 0.4;
+  }
+}
+
+.content {
+  font-family: "Work Sans", sans-serif;
+  font-size: 18px; // Good readable font size
+  line-height: 1.5; // More space between lines
+  margin-bottom: 20px; // Space between each content item
+  padding: 10px 20px; // Padding around the content for better appearance
+  border-radius: 8px; // Rounded corners
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); // Subtle shadow for a lifted effect
+  background-color: #f9f9f9; // A very light grey, making it slightly distinguishable from a white background
+  color: #420285;
+  // A simple hover effect to give a more interactive feel
+  &:hover {
+    background-color: #f0f0f0;
+    transition: background-color 0.3s ease;
+  }
+}
