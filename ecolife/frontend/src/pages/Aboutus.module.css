@@ -6,6 +6,8 @@
   justify-content: center;
   gap: 2.5rem;
   text-align: center;
+  padding: 1rem;
+  color: black;
 }
 
 .aboutus div {
@@ -13,7 +15,6 @@
   background-image: url("../../public/aboutus.jpeg");
   background-size: fit;
   background-position: center;
-  margin-top: 2rem;
 }
 
 .aboutus p {

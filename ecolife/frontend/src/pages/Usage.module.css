@@ -5,12 +5,19 @@
   --color-dark: #ff922b;
 }
 .usage {
-  margin: 5rem;
-  min-height: 70vh;
   display: grid;
-  grid-template-columns: 30% 40% 30%;
+  grid-template-columns: 30% 35% 28%;
   column-gap: 4rem;
   align-items: start;
+  height: calc(100vh - 5rem);
+
+  background-image: linear-gradient(
+      rgba(36, 42, 46, 0.8),
+      rgba(36, 42, 46, 0.8)
+    ),
+    url("/background_home.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .button {
@@ -132,6 +139,7 @@ form h2 {
 }
 
 .devicelist {
+  margin-top: 2rem;
   width: 100%;
   border-collapse: collapse; /* Collapse borders */
 }
@@ -178,11 +186,12 @@ form h2 {
   font-weight: 200;
   background-color: #7da26b;
   padding: 2rem;
+  margin: 2rem;
 }
 
 .danger {
   display: block;
-  color: #b80909;
+  color: #b36b06;
   text-align: center;
   font-weight: bold;
 }
@@ -195,7 +204,12 @@ form h2 {
 }
 
 .compare {
-  margin-top: 2rem;
+  margin: 0 2rem;
   display: grid;
   justify-self: center;
+}
+
+.sidebar {
+  margin-top: 2rem;
+  margin-left: 2rem;
 }
