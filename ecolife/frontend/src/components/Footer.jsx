@@ -6,7 +6,7 @@ function Footer() {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.item}>
-          © 2023 YourCompanyName. All rights reserved.
+          © 2023 Coding Parlour. All rights reserved.
         </div>
       </div>
     </footer>
