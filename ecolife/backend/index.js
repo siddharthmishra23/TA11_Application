@@ -20,7 +20,7 @@ app.use("/postcodes", postcodesRouter);
 //app.get(/^(?!\/api).+/, (req, res) => {
 // res.sendFile(path.join(__dirname, "./dist/index.html"));
 //});
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 createTables(() => {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
