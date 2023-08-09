@@ -3,6 +3,8 @@ import PageNav from "../components/PageNav";
 import styles from "./Usage.module.css";
 import ComparisonModal from "./Visualization";
 
+// const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "http://localhost:3006";
+
 export default function Usage() {
   const [electricityTotal, setElectricityTotal] = useState(0);
   const [gasTotal, setGasTotal] = useState(0);
@@ -33,10 +35,8 @@ export default function Usage() {
   }, [comparisonData]);
 
   useEffect(() => {
-    fetch("http://localhost:3004/gas")
-      .then((response) => {
-        return response.json();
-      })
+    fetch(`/gas`)
+      .then((response) => response.json())
       .then((data) => {
         setGasData(data);
       })
@@ -46,10 +46,8 @@ export default function Usage() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3004/electricity")
-      .then((response) => {
-        return response.json();
-      })
+    fetch(`/electricity`)
+      .then((response) => response.json())
       .then((data) => {
         setElectricityData(data);
       })
@@ -57,11 +55,10 @@ export default function Usage() {
         console.log(error);
       });
   }, []);
+
   useEffect(() => {
-    fetch("http://localhost:3004/postcodes")
-      .then((response) => {
-        return response.json();
-      })
+    fetch(`/postcodes`)
+      .then((response) => response.json())
       .then((data) => {
         setPostcodes(data);
       })
@@ -114,8 +111,8 @@ export default function Usage() {
       );
       return {
         name: edata.suburb,
-        electricity: edata.emissionPerYear,
-        gas: gdata ? gdata.emissionPerYear : 0,
+        electricity: edata.avg_CO2_kg_per_customer_year,
+        gas: gdata ? gdata.avg_CO2_kg_per_customer_year : 0,
       };
     });
 
