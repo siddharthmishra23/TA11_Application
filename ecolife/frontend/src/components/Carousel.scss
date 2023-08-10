@@ -11,8 +11,11 @@ $slide-change-timing: 3; // percentage of total animation cycle
   justify-content: center;
   position: absolute;
   margin-top: 2rem;
-  right: 10rem;
   padding: 4em;
+  margin-bottom: 2rem;
+  height: 80vh;
+  width: 60vw;
+  overflow: auto;
 }
 
 .carousel {
@@ -176,4 +179,5 @@ $slide-change-timing: 3; // percentage of total animation cycle
     background-color: #f0f0f0;
     transition: background-color 0.3s ease;
   }
+  overflow: auto;
 }

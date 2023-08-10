@@ -212,4 +212,6 @@ form h2 {
 .sidebar {
   margin-top: 2rem;
   margin-left: 2rem;
+  overflow: auto;
+  height: calc(100vh - 30rem);
 }

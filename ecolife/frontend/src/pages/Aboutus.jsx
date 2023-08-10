@@ -3,7 +3,7 @@ import styles from "./Aboutus.module.css";
 
 export default function Aboutus() {
   return (
-    <div style={{ height: "100vh" }}>
+    <div>
       <PageNav />
       <div className={styles.aboutus}>
         <div></div>
