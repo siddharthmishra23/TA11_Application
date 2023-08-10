@@ -11,30 +11,33 @@ const emojis = [
 const topics = [
   {
     id: 1,
-    content: "First we need to enter the device name, it can be anything.",
+    content:
+      "Begin by entering a name for the device. This can be any descriptive name of your choice.",
   },
   {
     id: 2,
     content:
-      "We need to select the  type of emission it gives, the source of this emission",
+      "Select the type of emission the device produces, as well as the source of the emission.",
   },
   {
     id: 3,
     content:
-      "We need to the number of hours we use the device range for this is 1 - 24 hours",
+      "Specify the number of hours you use the device daily. The range is between 1 and 24 hours.",
   },
   {
     id: 4,
     content:
-      "We then enter the device detail which can be found on the backside of the product.",
+      "Provide information about the device, which can typically be found on the product's rear side.",
   },
   {
     id: 5,
-    content: "We Add your devices and calculate the  emission for whole year",
+    content:
+      "Add all your devices to calculate their cumulative emissions for an entire year.",
   },
   {
     id: 6,
-    content: "Add Device and Compare with other suburbs",
+    content:
+      "Once added, compare your device's emissions with those from other suburbs.",
   },
 ];
 
