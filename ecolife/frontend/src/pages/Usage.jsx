@@ -136,7 +136,7 @@ export default function Usage() {
           <FormAddDevice toAdd={handleDevice} />
         </div>
 
-        <div className="">
+        <div>
           {devices.length > 0 ? (
             <DeviceTable devices={devices} onDelete={handleDelete} />
           ) : (

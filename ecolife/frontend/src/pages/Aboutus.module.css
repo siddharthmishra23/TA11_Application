@@ -1,7 +1,6 @@
 .aboutus section {
   display: flex;
   flex-direction: column;
-  height: 85%;
   align-items: center;
   justify-content: center;
   gap: 2.5rem;
