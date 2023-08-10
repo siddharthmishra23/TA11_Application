@@ -93,6 +93,36 @@ export default function Usage() {
     setGasTotal(totalGas * 365);
   }, [devices]);
 
+  // const handleCompare = () => {
+  //   const yourHomeData = {
+  //     name: "Your Home",
+  //     electricity: electricityTotal,
+  //     gas: gasTotal,
+  //   };
+
+  //   // Filter data based on selected year
+  //   const electricityYearData = electricityData.filter(
+  //     (data) => data.year === year
+  //   );
+
+  //   // Filter data based on selected year
+  //   const gasYearData = gasData.filter((data) => data.year === year);
+
+  //   // Combine data
+  //   const combinedData = electricityYearData.map((edata) => {
+  //     const gdata = gasData.find(
+  //       (g) => g.year === year && g.suburb === edata.suburb
+  //     );
+  //     return {
+  //       name: edata.suburb,
+  //       electricity: edata.avg_CO2_kg_per_customer_year,
+  //       gas: gdata ? gdata.avg_CO2_kg_per_customer_year : 0,
+  //     };
+  //   });
+
+  //   const comparisonData = [yourHomeData, ...combinedData];
+  //   setComparisonData(comparisonData);
+  // };
   const handleCompare = () => {
     const yourHomeData = {
       name: "Your Home",
@@ -102,17 +132,28 @@ export default function Usage() {
 
     // Filter data based on selected year
     const electricityYearData = electricityData.filter(
-      (data) => data.year === year
+      (data) => data.year == year
     );
 
-    // Combine data
-    const combinedData = electricityYearData.map((edata) => {
-      const gdata = gasData.find(
-        (g) => g.year === year && g.suburb === edata.suburb
-      );
+    // Filter data based on selected year
+    const gasYearData = gasData.filter((data) => data.year == year);
+
+    // Create a list of unique suburbs from both electricity and gas data
+    const allSuburbs = [
+      ...new Set([
+        ...electricityYearData.map((e) => e.suburb),
+        ...gasYearData.map((g) => g.suburb),
+      ]),
+    ];
+
+    // Combine data for each suburb
+    const combinedData = allSuburbs.map((suburb) => {
+      const edata = electricityYearData.find((e) => e.suburb === suburb);
+      const gdata = gasYearData.find((g) => g.suburb === suburb);
+
       return {
-        name: edata.suburb,
-        electricity: edata.avg_CO2_kg_per_customer_year,
+        name: suburb,
+        electricity: edata ? edata.avg_CO2_kg_per_customer_year : 0,
         gas: gdata ? gdata.avg_CO2_kg_per_customer_year : 0,
       };
     });
@@ -153,7 +194,7 @@ export default function Usage() {
                   <span
                     className={gasTotal > 6000 ? styles.danger : styles.good}
                   >
-                    {gasTotal}
+                    {gasTotal} (KG CO₂)
                   </span>
                 </p>
               </div>
@@ -176,7 +217,7 @@ export default function Usage() {
             )}
 
             <div style={{ margin: "2rem", fontSize: "11px" }}>
-              <label>Choose year to compare with your neighbour</label>
+              <label>Choose a year to compare with your neighbours</label>
               <select
                 name="year"
                 id="year"
